@@ -4,8 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const Carousel = () => {
-  const sliderRef = useRef(null); // Create a reference for the slider instance
-
+  const sliderRef = useRef(null); 
   const cardData = [
     {
       image:
@@ -50,51 +49,49 @@ const Carousel = () => {
   ];
 
   const settings = {
-    dots: true, // Show navigation dots
-    infinite: true, // Infinite loop
+    dots: true,
+    infinite: true, 
     autoplay: true,
     autoplaySpeed: 3000,
-    speed: 500, // Transition speed, set to 500ms for smooth movement
-    slidesToShow: 4, // Show 4 slides at a time on large screens
-    slidesToScroll: 1, // Scroll one slide at a time (important for the behavior you need)
-    arrows: false, // Hide the default arrows (we will use the custom click)
-    centerMode: false, // Disable center mode (to prevent centering of slides)
-    focusOnSelect: true, // Focus on the selected slide
+    speed: 500, 
+    slidesToShow: 4, 
+    slidesToScroll: 1,
+    arrows: false, 
+    centerMode: false, 
+    focusOnSelect: true, 
     responsive: [
       {
-        breakpoint: 1024, // Adjust for tablets and below
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 3, // Show 3 cards on medium screens (e.g., tablets)
-          slidesToScroll: 1, // Scroll one slide at a time
+          slidesToShow: 3, 
+          slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 768, // Adjust for smaller tablets or larger phones
+        breakpoint: 768, 
         settings: {
-          slidesToShow: 2, // Show 2 cards on mobile screens
-          slidesToScroll: 1, // Scroll one slide at a time
+          slidesToShow: 2,
+          slidesToScroll: 1, 
         },
       },
       {
-        breakpoint: 480, // Adjust for mobile devices
+        breakpoint: 480,
         settings: {
-          slidesToShow: 1, // Show 1 card on very small mobile screens
-          slidesToScroll: 1, // Scroll one slide at a time
+          slidesToShow: 1, 
+          slidesToScroll: 1, 
         },
       },
     ],
   };
 
-  // Handle click event to move to the previous slide
   const handleLeftClick = (e) => {
-    const container = e.target.closest(".slick-track"); // Get the closest slider container
+    const container = e.target.closest(".slick-track");
     const rect = container.getBoundingClientRect();
     const clickX = e.clientX;
 
-    // If the click is on the left side, move to the previous slide
     if (clickX < rect.width / 2) {
       if (sliderRef.current) {
-        sliderRef.current.slickPrev(); // Move to the previous slide
+        sliderRef.current.slickPrev(); 
       }
     }
   };
@@ -113,7 +110,7 @@ const Carousel = () => {
               <img
                 src={card.image}
                 alt={`card-${index}`}
-                className="w-full h-[200px] object-cover rounded-lg" // Set fixed height for card
+                className="w-full h-[200px] object-cover rounded-lg"
               />
               <div className=" text-center text-lg font-bold py-2  rounded-md">
                 {card.text}
